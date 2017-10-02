@@ -12,11 +12,11 @@ import com.ozgr.model.Address;
 import com.ozgr.model.Person;
 
 public class PersonDAOImpl  implements PersonDAO{
-    @SuppressWarnings("unused")
+   ]
 	private SessionFactory factory;
-    private Session session;
+        private Session session;
     {
-    	SessionFactory factory = new Configuration().configure().buildSessionFactory();
+    	    factory = new Configuration().configure().buildSessionFactory();
 	    session = factory.openSession();
     }
 	@Override
