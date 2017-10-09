@@ -12,7 +12,7 @@ import com.ozgr.model.Address;
 import com.ozgr.model.Person;
 
 public class PersonDAOImpl  implements PersonDAO{
-   ]
+   
 	private SessionFactory factory;
         private Session session;
     {
