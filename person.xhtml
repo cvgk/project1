@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</h:head>
+<h:body>
+     <h:form>
+         <p:growl id="messages" showDetail="true"></p:growl>
+         <p:panel>
+            <h:panelGrid columns="3">
+               <p:outputLabel for="ad" value="Ad: "></p:outputLabel>
+               <h:inputText value="#{personBean.ad}" required="true" 
+         requiredMessage="lutfen ad alanini bos gecmeyiniz." id="ad" validatorMessage="ad alaninda rakam kullanamazsiniz">
+         <f:validateRegex pattern="[a-zA-Z]*" />  
+         <p:ajax update="msgfirstname" event="keyup"></p:ajax>
+         </h:inputText>
+         <h:message for="ad" style="color:red;" id="msgfirstname"></h:message>
+         
+         <p:outputLabel for="soyad" value="Soyad: "></p:outputLabel>
+         <h:inputText value="#{personBean.soyad}" required="true" 
+         requiredMessage="lutfen soyad kismini bos gecmeyiniz." id="soyad" validatorMessage="soyad alaninda rakam kullanamazsiniz.">
+         <f:validateRegex pattern="[a-zA-Z]*" />  
+         <p:ajax update="msglastname" event="keyup"></p:ajax>
+         </h:inputText>
+         <h:message for="soyad" style="color:red" id="msglastname"></h:message>
+         
+         <p:outputLabel for="cinsiyet" value="cinsiyeti seciniz."></p:outputLabel>
+         <p:selectOneMenu id="cinsiyet" value="#{personBean.cinsiyet}">
+            <f:selectItem itemLabel="cinsiyeti seciniz" itemValue="" noSelectionOption="true"></f:selectItem>
+            <f:selectItem itemLabel="erkek" itemValue="erkek"></f:selectItem>
+            <f:selectItem itemLabel="kadin" itemValue="kadin"></f:selectItem>
+         </p:selectOneMenu>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+              <p:outputLabel for="telefonnum" value="Telefon Numaralari: "></p:outputLabel>
+              <h:inputText value="#{personBean.telefonNumaralari}" id="telefonnum"></h:inputText>
+              
+              <p:outputLabel for="email" value="E-mail: "></p:outputLabel>
+              <h:inputText value="#{personBean.email}" id="email"></h:inputText>
+              
+              <p:outputLabel for="as1" value="Adres Satiri1: "></p:outputLabel>
+              <h:inputText value="#{personBean.adres1}" id="as1"></h:inputText>
+              
+              <p:outputLabel for="as2" value="Adres Satiri2: "></p:outputLabel>
+              <h:inputText value="#{personBean.adres2}" id="as2"></h:inputText>
+              
+              <p:outputLabel for="ilce" value="ilce: "></p:outputLabel>
+              <h:inputText value="#{personBean.ilce}" id="ilce"></h:inputText>
+              
+              <p:outputLabel for="il" value="il: "></p:outputLabel>
+              <h:inputText value="#{personBean.il}" id="il"></h:inputText>
+              
+              <p:outputLabel for="pk" value="Posta Kodu: "></p:outputLabel>
+              <h:inputText value="#{personBean.postaKodu}" id="pk"></h:inputText>
+             </h:panelGrid>
+             <p:separator></p:separator>
+             <h:panelGrid columns="6">
+            <p:commandButton actionListener="#{personBean.kaydet}" value="kaydet" update="messages"></p:commandButton>
+            <p:commandButton actionListener="#{personBean.sil}" value="sil" icon="ui-icon" update="messages"></p:commandButton>
+            <p:commandButton actionListener="#{personBean.ara}" value="ara" icon="ui-icon-disk" update="messages"></p:commandButton>
+            <p:commandButton actionListener="#{personBean.update}" value="degisikleri kaydet" update="messages"></p:commandButton>
+            <p:commandButton actionListener="#{personBean.incele}" value="incele" update="messages"></p:commandButton>
+            <p:commandButton actionListener="#{personBean.detayliincele}" value="detayli incele" update="messages"></p:commandButton>
+             </h:panelGrid>
+         </p:panel>
+          
+       
+        
+         
+         
+         <p:dataTable value="#{personBean.persons}" var="person">
+            <p:column headerText="Ad">
+                <h:outputText value="#{person.ad}"></h:outputText>
+            </p:column>
+            <p:column headerText="Soyad">
+               <h:outputText value="#{person.soyad}"></h:outputText>
+            </p:column>
+            <p:column headerText="Address">
+               <h:outputText value="#{person.address}"></h:outputText>
+            </p:column>
+            <p:column headerText="Telefon Numaralari">
+               <h:outputText value="#{person.telefonNumaralari}"></h:outputText>
+            </p:column>
+         </p:dataTable>
+     </h:form>
+</h:body>
+</html>
